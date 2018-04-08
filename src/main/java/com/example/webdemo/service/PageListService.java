@@ -12,5 +12,5 @@ import java.util.List;
  * Description:
  */
 public interface PageListService {
-    List<Page> getIndexPageItem(String userId);
+    List<Page> getIndexPageItem(int userId);
 }

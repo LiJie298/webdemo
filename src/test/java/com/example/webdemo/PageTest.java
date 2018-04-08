@@ -23,8 +23,6 @@ import java.util.List;
 @SpringBootTest
 public class PageTest {
     @Autowired
-    private MongoTemplate template;
-    @Autowired
     private PageListService pageListService;
 
     @Test
@@ -58,13 +56,13 @@ public class PageTest {
         pageList.add(page1);
         pageList.add(page2);
         pageList.add(page3);
-        template.insertAll(pageList);
+//        template.insertAll(pageList);
     }
 
     @Test
     public void getIndexPage(){
         int userId = 6746;
-        List<Page> pages = pageListService.getIndexPageItem(String.valueOf(userId));
+        List<Page> pages = pageListService.getIndexPageItem(userId);
 
     }
 }

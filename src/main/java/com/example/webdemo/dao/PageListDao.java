@@ -12,7 +12,7 @@ import java.util.List;
  * Description:
  */
 public interface PageListDao {
-    List<Page> getAllPageList(String userId);
+    List<Page> getAllPageList(int userId);
 
     void insertPageList(Page page);
 }

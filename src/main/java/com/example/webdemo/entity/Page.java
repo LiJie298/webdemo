@@ -1,6 +1,9 @@
 package com.example.webdemo.entity;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.util.List;
 
 /**
  * Created info
@@ -12,10 +15,12 @@ import org.bson.types.ObjectId;
 public class Page {
     private ObjectId id;
     private int parentId;
+    private int currentId;
     private int childId;
     private String userId;
     private String name;
     private int sort;
+    private List<Page> page;
 
     public Page() {
     }
@@ -56,6 +61,14 @@ public class Page {
         return name;
     }
 
+    public int getCurrentId() {
+        return currentId;
+    }
+
+    public void setCurrentId(int currentId) {
+        this.currentId = currentId;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -73,6 +86,7 @@ public class Page {
         return "Page{" +
                 "id=" + id +
                 ", parentId=" + parentId +
+                ", currentId=" + currentId +
                 ", childId=" + childId +
                 ", userId='" + userId + '\'' +
                 ", name='" + name + '\'' +

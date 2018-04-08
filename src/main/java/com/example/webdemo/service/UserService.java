@@ -16,8 +16,7 @@ public interface UserService {
     /**
      * 核对用户是否正确
      * @param userName
-     * @param password
      * @return
      */
-    User getUser(String userName,String password);
+    User getUser(String userName);
 }

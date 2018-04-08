@@ -7,9 +7,9 @@
 <input type="image" src="${base}/static/image/logo.jpg"/>抓站后台
 <div>
     <div float="left">
-        <#list pageList as page>
-            <div>${page.name}</div>
-        </#list>
+            <#list pageList as page>
+                <div>${page.name}</div>
+            </#list>
     </div>
     <div float="right"></div>
 </div>

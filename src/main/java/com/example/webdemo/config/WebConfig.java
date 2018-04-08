@@ -1,10 +1,12 @@
 package com.example.webdemo.config;
 
 import com.example.webdemo.interceptor.MyInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
  * Created info
@@ -19,8 +21,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration interceptorRegistration = registry.addInterceptor(new MyInterceptor());
-        interceptorRegistration.excludePathPatterns("/static").excludePathPatterns("/login**");
+        interceptorRegistration.excludePathPatterns("/login**");
+        interceptorRegistration.excludePathPatterns("/static/**");
         interceptorRegistration.addPathPatterns("/**");
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:static/");
     }
 
 }

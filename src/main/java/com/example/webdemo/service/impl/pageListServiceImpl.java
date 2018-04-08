@@ -19,8 +19,9 @@ import java.util.List;
 public class pageListServiceImpl implements PageListService {
     @Autowired
     private PageListDao pageListDao;
+
     @Override
-    public List<Page> getIndexPageItem(String userId) {
+    public List<Page> getIndexPageItem(int userId) {
         return pageListDao.getAllPageList(userId);
     }
 }

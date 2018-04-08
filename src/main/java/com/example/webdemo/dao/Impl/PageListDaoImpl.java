@@ -2,7 +2,9 @@ package com.example.webdemo.dao.Impl;
 
 import com.example.webdemo.dao.PageListDao;
 import com.example.webdemo.entity.Page;
+import com.example.webdemo.mongo.MongoInstance;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -20,19 +22,22 @@ import java.util.List;
  */
 @Repository(value = "pageDao")
 public class PageListDaoImpl implements PageListDao {
+
+    private static final String COLLECTION = "page";
     @Autowired
-    private MongoTemplate mongoTemplate;
+    @Qualifier("writeMongo")
+    private MongoTemplate writeMongo;
 
     @Override
-    public List<Page> getAllPageList(String userId) {
+    public List<Page> getAllPageList(int userId) {
         Query query = new Query();
         query.addCriteria(Criteria.where("userId").is(userId));
-        query.with(Sort.by(Sort.Direction.ASC,"sort"));
-        return mongoTemplate.find(query,Page.class);
+        query.with(Sort.by(Sort.Direction.ASC, "sort"));
+        return writeMongo.find(query, Page.class, COLLECTION);
     }
 
     @Override
     public void insertPageList(Page page) {
-        mongoTemplate.insert(page);
+        writeMongo.insert(page, COLLECTION);
     }
 }

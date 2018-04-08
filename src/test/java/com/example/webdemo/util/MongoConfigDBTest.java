@@ -20,7 +20,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MongoDBTest {
+public class MongoConfigDBTest {
     @Autowired
     private MongoTemplate mongoTemplate;
 
@@ -78,8 +78,8 @@ public class MongoDBTest {
         MongoDatabase client =  mongoTemplate.getDb();
 ////        client.createCollection("user",new CreateCollectionOptions().autoIndex(true));
         MongoCollection collection =client.getCollection("user",User.class);
-        User user = new User(LocalDateTime.now().getLong(ChronoField.SECOND_OF_DAY),"test","lijie");
-        collection.insertOne(user);
+//        User user = new User(LocalDateTime.now().getLong(ChronoField.SECOND_OF_DAY),"test","lijie");
+//        collection.insertOne(user);
 //        mongoTemplate.insert(user,"");
     }
 }

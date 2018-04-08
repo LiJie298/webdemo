@@ -24,8 +24,8 @@ public class IndexController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(Map<String, Object> map) {
-        int userId = 6746;
-        List<Page> pages = pageListService.getIndexPageItem(String.valueOf(userId));
+        int userId = 0;
+        List<Page> pages = pageListService.getIndexPageItem(userId);
         pages.forEach(System.out::print);
         map.put("pageList", pages);
         return "index";
